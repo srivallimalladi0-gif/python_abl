@@ -36,4 +36,9 @@ ELSE
     PRINT "Invalid Registration ID"
 ENDIF
 
-STOP
+STOP 
+Enter student email: studentgmail.com
+Enter registration ID: 123@ABC
+
+Invalid Email: Missing or extra @
+Invalid Registration ID: Length must be 10
