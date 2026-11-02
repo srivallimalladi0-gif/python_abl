@@ -57,3 +57,15 @@ DISPLAY shortfall
 DISPLAY minimum_registrations
 
 STOP
+
+5. Computational Thinking
+Decomposition: Divide the event budget into venue, equipment, catering, transport and certificate costs.
+Pattern Recognition: Identify the common calculations of costs, contributions and funds.
+Abstraction: Consider only the important financial details required for planning.
+Algorithm Design: Develop step-by-step instructions to calculate expenses, funds and break-even registrations.
+6. Important Formulas
+Calculation Formula
+Fixed cost Venue + Equipment + Catering + Transport
+Total cost Fixed cost + Certificate cost
+Participant contribution Participants × Registration fee
+Total funds Participant contribution + Sponsorship
