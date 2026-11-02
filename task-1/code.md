@@ -12,3 +12,41 @@
 12.If attendance is also equal, give priority to lower family income.
 13.Display the final scholarship ranking.
 14.Stop.
+
+PSEUDOCODE
+
+START
+
+INPUT number of students
+
+CREATE empty eligible list
+
+FOR each student
+
+    INPUT name
+    INPUT aggregate marks
+    INPUT subject marks
+    INPUT attendance
+    INPUT family income
+
+    IF aggregate marks >= 75 AND
+       all subject marks >= 60 AND
+       attendance >= 75 AND
+       family income <= 250000 THEN
+
+          ADD student to eligible list
+
+    ELSE
+          DISPLAY "Not Eligible"
+    END IF
+
+END FOR
+
+SORT eligible students BY
+    aggregate marks DESCENDING
+    attendance DESCENDING
+    family income ASCENDING
+
+DISPLAY scholarship ranking
+
+STOP
