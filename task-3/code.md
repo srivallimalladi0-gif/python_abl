@@ -27,6 +27,18 @@ FOR each applicant
     INPUT entrance_marks
 
     IF subject_marks >= subject_cutoff AND
+
+Computational Thinking
+Decomposition: Divide the admission process into marks collection, eligibility checking, sorting and ranking.
+Pattern Recognition: Identify common eligibility conditions for all applicants.
+Abstraction: Consider only important marks and admission criteria.
+Algorithm Design: Create step-by-step instructions to select and rank eligible applicants.
+6. Tie-Breaking Criteria
+Priority Condition
+1 Highest aggregate marks
+2 Highest subject marks
+3 Highest entrance exam marks
+Result: The program selects eligible applicants, sorts them according to marks and displays their admission ranks.
        aggregate_marks >= minimum_marks
 
         ADD applicant to eligible list
