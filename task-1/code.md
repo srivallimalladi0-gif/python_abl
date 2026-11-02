@@ -50,3 +50,7 @@ SORT eligible students BY
 DISPLAY scholarship ranking
 
 STOP
+
+ Conclusion
+This program checks student eligibility using marks, attendance, and family income. It selects eligible students and ranks them based on aggregate marks, attendance, and income. It helps universities allocate scholarships fairly.
+Note: The eligibility limits and tie-breaking rules used here are sample rules for this assignment. Actual university scholarship rules may differ.
