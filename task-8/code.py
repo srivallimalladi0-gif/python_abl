@@ -1,4 +1,4 @@
-# Case Study 9: Tuple-Based Product Catalogue Audit
+ Tuple-Based Product Catalogue Audit
 # Topic 49 - Uses tuples, lists, loops, conditions, and tuple unpacking.
 
 print("=" * 60)
