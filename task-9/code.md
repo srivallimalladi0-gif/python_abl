@@ -1,4 +1,4 @@
-Case Study 8: Student Marks Matrix Analysis
+Student Marks Matrix Analysis
 Selected topic: Topic 42 — Student Marks Matrix Analysis
 
 1. Problem Statement
