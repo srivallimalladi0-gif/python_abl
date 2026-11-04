@@ -1,138 +1,95 @@
-Case Study 10: Food Waste Monitoring System
+ Advanced Numeric Pattern Generator
 1. Problem Statement
-Compare prepared meals, meals served, and leftovers across several days; calculate wastage percentages and identify days exceeding acceptable limits.
+Develop an interactive Python program that lets the user choose between a symmetric filled numeric diamond and a hollow numeric diamond. The program must accept a dimension, validate inputs, and display a carefully aligned pattern.
 
 2. Objectives
-Record meal counts for multiple days.
-Calculate daily and overall food-wastage percentages.
-Identify days whose wastage percentage exceeds the user-defined acceptable limit.
-Compare prepared, served, and leftover counts and flag inconsistent records.
+Generate two different diamond patterns using loops.
+Use nested loops, strings, conditionals, and spacing.
+Accept the user's pattern selection.
+Validate the menu choice and the size.
+Produce a symmetric, aligned output.
 3. Assumptions
-The number of days must be a positive whole number.
-Meal counts must be non-negative whole numbers.
-The acceptable wastage limit is entered as a percentage from 0 to 100.
-Daily wastage percentage is calculated as leftovers / meals prepared * 100.
-A day exceeds the limit only when its wastage percentage is greater than the limit; equality is considered within the limit.
-For a day with zero meals prepared, the wastage percentage is shown as N/A to avoid division by zero.
-A record is consistent when meals prepared = meals served + leftovers. Mismatches are reported but retained in the wastage calculations so that the user can review the entered data.
-These validation and threshold details are implementation assumptions because the case prompt does not prescribe exact rules.
+Pattern choice 1 means a filled symmetric diamond; choice 2 means a hollow diamond.
+The size must be a whole number from 1 to 9.
+The filled diamond prints ascending numbers and then descending numbers in each row.
+The hollow diamond prints the row number at the left and right edges, leaving spaces inside.
+The middle row is displayed only once.
 4. Algorithm
-Start.
-Read and validate the number of days.
-Read and validate the acceptable wastage percentage.
-For each day:
-Read a non-empty day label.
-Read prepared, served, and leftover meal counts; reject negative or non-integer values.
-Check whether prepared meals equal served meals plus leftovers.
-If prepared meals are greater than zero, calculate wastage percentage; otherwise record it as N/A.
-Store the day's data in lists.
-Display the daily counts, wastage percentage, threshold status, and consistency check.
-Calculate totals for prepared, served, and leftover meals.
-Calculate and display overall wastage percentage when total prepared meals are greater than zero.
-Count and display days with inconsistent meal counts.
-Stop.
+Display the title and pattern menu.
+Ask the user to choose pattern 1 or 2. Repeat the prompt for invalid choices.
+Ask for a size from 1 to 9. Repeat the prompt for non-integer or out-of-range input.
+Generate the upper half of the selected diamond, including the middle row.
+Generate the lower half in reverse order, excluding the middle row.
+Display a completion message identifying the selected pattern.
 5. Flowchart
 flowchart TD
-    A([Start]) --> B[/Input number of days and acceptable limit/]
-    B --> C[Initialize lists and totals]
-    C --> D{More days to enter?}
-    D -- Yes --> E[/Input day label and meal counts/]
-    E --> F[Check prepared = served + leftovers]
-    F --> G{Prepared meals > 0?}
-    G -- Yes --> H[Calculate daily wastage percentage]
-    G -- No --> I[Set percentage to N/A]
-    H --> J[Store day data]
-    I --> J
-    J --> D
-    D -- No --> K[Display daily report and alerts]
-    K --> L[Calculate totals and overall wastage]
-    L --> M[Display summary and mismatch count]
-    M --> N([Stop])
+    A([Start]) --> B[Display pattern menu]
+    B --> C[/Enter choice 1 or 2/]
+    C --> D{Valid choice?}
+    D -- No --> C
+    D -- Yes --> E[/Enter size 1 to 9/]
+    E --> F{Valid size?}
+    F -- No --> E
+    F -- Yes --> G[Generate upper half]
+    G --> H[Generate lower half]
+    H --> I[Display completion message]
+    I --> J([End])
 6. Pseudocode
 START
-INPUT number_of_days
-INPUT acceptable_limit
-FOR each day
-    INPUT day_label, prepared, served, leftovers
-    consistent = (prepared == served + leftovers)
-    IF prepared > 0
-        wastage = leftovers / prepared * 100
+DISPLAY pattern menu
+REPEAT
+    INPUT choice
+UNTIL choice is 1 or 2
+
+REPEAT
+    INPUT size
+UNTIL size is an integer from 1 to 9
+
+FOR row from 1 to size
+    DISPLAY leading spaces
+    IF choice is 1
+        DISPLAY ascending numbers and descending numbers
     ELSE
-        wastage = N/A
-    END IF
-    STORE values in lists
-END FOR
+        DISPLAY row number at both edges with inner spaces
+FOR row from size - 1 down to 1
+    DISPLAY leading spaces
+    IF choice is 1
+        DISPLAY ascending numbers and descending numbers
+    ELSE
+        DISPLAY row number at both edges with inner spaces
 
-DISPLAY each day's counts and wastage
-IF daily wastage > acceptable_limit
-    DISPLAY warning
-END IF
-DISPLAY consistency status for each day
-
-CALCULATE total_prepared, total_served, total_leftovers
-IF total_prepared > 0
-    overall_wastage = total_leftovers / total_prepared * 100
-    DISPLAY overall_wastage and threshold status
-ELSE
-    DISPLAY N/A
-END IF
-COUNT and DISPLAY inconsistent days
+DISPLAY completion message
 STOP
 7. Python Source Code
-File: main.py
-
-The program uses input validation, lists, loops, conditional statements, arithmetic operators, and formatted strings. It does not require external libraries.
+See main.py in this folder.
 
 8. Test Cases
-Test	Input / condition	Expected result
-1	Prepared 100, served 90, leftovers 10; limit 15%	Wastage 10%; within limit; counts consistent
-2	Prepared 120, served 96, leftovers 24; limit 15%	Wastage 20%; alert shown; counts consistent
-3	Prepared 80, served 70, leftovers 10; limit 15%	Wastage 12.50%; within limit
-4	Prepared 50, served 35, leftovers 15; limit 15%	Wastage 30%; alert shown
-5	Prepared 10, served 7, leftovers 2	Wastage 20%; mismatch flagged because 7 + 2 is not 10
-6	Prepared 0, served 0, leftovers 0	Wastage shown as N/A; no division-by-zero error
-7	Negative or non-integer meal count	Input is rejected and requested again
-9. Sample Input
-Enter number of days to monitor: 4
-Enter acceptable wastage limit (0-100%): 15
+Pattern choice	Size	Expected result
+1	3	Filled symmetric diamond
+2	3	Hollow diamond
+1	1	Single number 1
+2	1	Single number 1
+3	3	Invalid choice rejected; user is prompted again
+1	0	Invalid size rejected; user is prompted again
+2	abc	Non-numeric size handled without crashing
+9. Sample Outputs
+Option 1: Symmetric filled diamond (size 4)
+   1
+  121
+ 12321
+1234321
+ 12321
+  121
+   1
+Option 2: Hollow diamond (size 4)
+   1
+  2 2
+ 3   3
+4     4
+ 3   3
+  2 2
+   1
+Output screenshots: Run the program twice: once with choice 1 and size 4, and once with choice 2 and size 4. Save the console screenshots in this folder as output_filled.png and output_hollow.png.
 
-Day 1
-Enter day name/label: Monday
-Meals prepared: 100
-Meals served: 90
-Leftover meals: 10
-
-Day 2
-Enter day name/label: Tuesday
-Meals prepared: 120
-Meals served: 96
-Leftover meals: 24
-
-Day 3
-Enter day name/label: Wednesday
-Meals prepared: 80
-Meals served: 70
-Leftover meals: 10
-
-Day 4
-Enter day name/label: Thursday
-Meals prepared: 50
-Meals served: 35
-Leftover meals: 15
-10. Expected Output Summary
-Monday: 10.00% wastage — within limit.
-Tuesday: 20.00% wastage — exceeds limit.
-Wednesday: 12.50% wastage — within limit.
-Thursday: 30.00% wastage — exceeds limit.
-Total prepared: 350 meals.
-Total served: 291 meals.
-Total leftovers: 59 meals.
-Overall wastage: 59 / 350 × 100 = 16.86%, which exceeds the 15% limit.
-Days with meal-count mismatches: 0.
-The program prints a detailed daily report and the overall summary when executed.
-
-11. Output Screenshots
-To complete this deliverable: Run main.py in Python and capture a screenshot showing the daily report and overall summary. Upload or add the screenshot to this folder/repository as required by the assignment. The expected output summary above is not a substitute for an actual execution screenshot.
-
-12. Conclusion
-The Food Waste Monitoring System compares meal preparation, serving, and leftovers over multiple days. It calculates daily and overall wastage percentages, flags days above the acceptable limit, and identifies meal-count mismatches. The project applies basic Python lists, loops, conditions, arithmetic, and input validation to a practical food-waste monitoring problem.
+10. Conclusion
+The interactive program gives users two numeric pattern options. It demonstrates loops, nested loops, conditionals, strings, and input validation while producing symmetric, carefully aligned output.
