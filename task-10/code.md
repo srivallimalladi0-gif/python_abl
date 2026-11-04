@@ -21,7 +21,7 @@ Ask for a size from 1 to 9. Repeat the prompt for non-integer or out-of-range in
 Generate the upper half of the selected diamond, including the middle row.
 Generate the lower half in reverse order, excluding the middle row.
 Display a completion message identifying the selected pattern.
-5. Flowchart
+5. Flowchart```merian
 flowchart TD
     A([Start]) --> B[Display pattern menu]
     B --> C[/Enter choice 1 or 2/]
@@ -33,7 +33,7 @@ flowchart TD
     F -- Yes --> G[Generate upper half]
     G --> H[Generate lower half]
     H --> I[Display completion message]
-    I --> J([End])
+    I --> J([End])```
 6. Pseudocode
 START
 DISPLAY pattern menu
