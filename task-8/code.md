@@ -1,4 +1,4 @@
-Case Study 9: Tuple-Based Product Catalogue Audit
+Tuple-Based Product Catalogue Audit
 Selected topic: Topic 49 — Tuple-Based Product Catalogue Audit
 
 1. Problem Statement
