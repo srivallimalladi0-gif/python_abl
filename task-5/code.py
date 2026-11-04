@@ -1,65 +1,42 @@
-"""
-Case Study 5: Advanced Numeric Pattern Generator
-Let the user choose a filled symmetric diamond or a hollow diamond.
-"""
 
-print("ADVANCED NUMERIC PATTERN GENERATOR")
-print("----------------------------------")
-print("1. Symmetric filled diamond")
-print("2. Hollow diamond")
 
-while True:
-    choice = input("Choose a pattern (1 or 2): ").strip()
-    if choice in ("1", "2"):
-        break
-    print("Invalid choice. Please enter 1 or 2.")
+n = int(input("Enter number of transactions: "))
 
-while True:
-    try:
-        size = int(input("Enter diamond size (1-9): "))
-        if 1 <= size <= 9:
-            break
-        print("Invalid size. Enter a number from 1 to 9.")
-    except ValueError:
-        print("Invalid input. Please enter a whole number.")
+for i in range(n):
+    print("\n1. Deposit")
+    print("2. Withdrawal")
 
-print()
+    choice = int(input("Enter your choice: "))
+    amount = float(input("Enter amount: "))
 
-# Generate the upper half, including the middle row.
-for row in range(1, size + 1):
-    print(" " * (size - row), end="")
+    if amount <= 0:
+        print("Invalid Amount")
+        rejected += 1
 
-    if choice == "1":
-        # Filled symmetric diamond: print ascending then descending numbers.
-        for number in range(1, row + 1):
-            print(number, end="")
-        for number in range(row - 1, 0, -1):
-            print(number, end="")
-        print()
-    else:
-        # Hollow diamond: print only the edges of each row.
-        if row == 1:
-            print(row)
+    elif choice == 1:
+        balance += amount
+        successful += 1
+        print("Deposit Successful")
+
+    elif choice == 2:
+        if amount > 2000:
+            print("Withdrawal Limit Exceeded")
+            rejected += 1
+
+        elif amount > balance:
+            print("Insufficient Balance")
+            rejected += 1
+
         else:
-            print(str(row) + " " * (2 * row - 3) + str(row))
+            balance -= amount
+            successful += 1
+            print("Withdrawal Successful")
 
-# Generate the lower half, excluding the middle row.
-for row in range(size - 1, 0, -1):
-    print(" " * (size - row), end="")
-
-    if choice == "1":
-        for number in range(1, row + 1):
-            print(number, end="")
-        for number in range(row - 1, 0, -1):
-            print(number, end="")
-        print()
     else:
-        if row == 1:
-            print(row)
-        else:
-            print(str(row) + " " * (2 * row - 3) + str(row))
+        print("Invalid Transaction Type")
+        rejected += 1
 
-if choice == "1":
-    print("Filled symmetric diamond generated successfully.")
-else:
-    print("Hollow diamond generated successfully.")
+print("\n--- ATM TRANSACTION SUMMARY ---")
+print("Final Balance:", balance)
+print("Successful Transactions:", successful)
+print("Rejected Transactions:", rejected)
